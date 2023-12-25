@@ -18,16 +18,21 @@ export const AwsmRouteElement = styled.div`
     color: ${({theme}) => theme.foreground.primary};
 `
 
-export const AwsmFlexCol = styled.div`
+export const AwsmFlexCol = styled.div<{height?: number}>`
     width: 100%;
-    height: 100%;
+    height: ${({height}) => height ? `${height}%`: '100%'};
     display: flex;
     flex-direction: column;
+    gap: 2.5rem;
 `
 
-export const AwsmFlexRow = styled.div`
-    width: 100%;
+export const AwsmFlexRow = styled.div<{width?: number, ai?: string, jc?: string, gap?: number, wrap?: boolean}>`
+    width: ${({width}) => width ? `${width}%`: '100%'};
     height: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: ${({jc}) => jc ? jc: 'center'};
+    align-items: ${({ai}) => ai ? ai: 'center'};
+    gap: ${({gap}) => gap ? `${gap}rem`: '1.5rem'};
+    flex-wrap: ${({wrap}) => wrap ? 'wrap': 'no-wrap'}
 `

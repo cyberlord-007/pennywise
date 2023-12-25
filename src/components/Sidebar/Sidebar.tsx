@@ -1,5 +1,5 @@
-import { AwsmSidebarTop, AwsmNavText, AwsmSidebarBottom, AwsmSidebarContent, AwsmSidebarItem, AwsmSidebarWrap } from '../../styled/AwsmSidebar/AwsmSidebar'
-import { AwsmHeading, AwsmTinyText } from '../../atoms/Typography'
+import { AwsmSidebarTop, AwsmNavText, AwsmSidebarBottom, AwsmSidebarContent, AwsmSidebarItem, AwsmSidebarWrap } from './AwsmSidebar'
+import { AwsmHeading, AwsmTinyText } from '../../atoms/AwsmTypography'
 import { useState } from 'react'
 import { RouteState, appRoutes, initialRouteState } from '../../constants/routes'
 

@@ -4,6 +4,7 @@ import App from './App.tsx'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './index.css'
 import Home from './views/Home/Home.tsx'
+import { Authentication } from './components/Protected/Authentication.tsx'
 
 const browserRouter = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const browserRouter = createBrowserRouter([
         element: <Home/>
       }
     ]
+  },
+  {
+    path: '/auth',
+    element: <Authentication/>
   }
 ])
 

@@ -1,18 +1,16 @@
 import { ThemeProvider } from 'styled-components'
-import Sidebar from './components/Sidebar/Sidebar'
 import { AwsmDarkTheme } from './theme/AwsmTheme'
-import { Outlet } from 'react-router'
-import { AwsmLayout, AwsmRouteElement } from './atoms/AwsmLayout'
+import { PennywiseProvider } from './context/PennywiseContext'
+import Protected from './components/Protected/Protected'
+
+
 function App() {
   return (
-    <ThemeProvider theme={AwsmDarkTheme}>
-      <AwsmLayout>
-        <Sidebar/>
-        <AwsmRouteElement>
-          <Outlet/>
-        </AwsmRouteElement>
-      </AwsmLayout>
-    </ThemeProvider>
+    <PennywiseProvider>
+      <ThemeProvider theme={AwsmDarkTheme}>
+        <Protected/>
+      </ThemeProvider>
+    </PennywiseProvider>
   )
 }
 

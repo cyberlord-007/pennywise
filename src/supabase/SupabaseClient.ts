@@ -3,6 +3,11 @@ import { ISupabase } from './ISupabase';
 import { ExpenseRecord } from './schema/ExpenseRecord';
 const env = import.meta.env;
 
+interface AuthCredentials {
+  email: string;
+  password: string;
+}
+
 export class SupabaseClient implements ISupabase {
   client: any = null;
   constructor() {
@@ -39,7 +44,28 @@ export class SupabaseClient implements ISupabase {
   }
 
   async queryData(table: string) {
-    const { data, error } = await this.client.from(table).select('amount');
+    const { data, error } = await this.client
+      .from(table)
+      .select('amount')
+      .order('amount', { ascending: false });
+    if (!error) {
+      return {
+        success: true,
+        response: data,
+      };
+    } else {
+      return {
+        success: false,
+        response: error,
+      };
+    }
+  }
+
+  async signUpNewUser(creds: AuthCredentials) {
+    const { data, error } = await this.client.auth.signUp({
+      email: creds.email,
+      password: creds.password,
+    });
     if (!error) {
       return {
         success: true,

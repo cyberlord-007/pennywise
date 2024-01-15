@@ -1,5 +1,6 @@
 import { ExpenseRecord } from '../supabase/schema/ExpenseRecord';
 import { v4 as uuidV4 } from 'uuid';
+
 const identifyAmount = (field1: string, field2: string) => {
   let amount = 0,
     commodity = '';
@@ -32,4 +33,18 @@ export const createExpenseRecord = (input: string): Array<ExpenseRecord> => {
     records.push(r);
   }
   return records;
+};
+
+export const queryOperations = {
+  maxSpent: (expenses: Array<any>) => {
+    let arr: any = [];
+    expenses.map((el: any) => arr.push(el.amount));
+    return Math.max(...arr);
+  },
+  totalSpent: (expenses: Array<any>) => {
+    let arr: any = [];
+    expenses.map((el: any) => arr.push(el.amount));
+    const total = arr.reduce((acc: any, el: any) => acc + el, 0);
+    return total;
+  },
 };
